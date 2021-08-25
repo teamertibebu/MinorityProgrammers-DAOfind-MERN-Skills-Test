@@ -34,6 +34,7 @@ const daoSchema = new mongoose.Schema({
   proposals: mongoose.Mixed,
   voters: mongoose.Mixed,
   voters_participation: mongoose.Mixed,
+  socials: { type: mongoose.Schema.Types.ObjectId, ref: 'Social Media' },
 });
 
 const daoModel = mongoose.model('DAO', daoSchema);
