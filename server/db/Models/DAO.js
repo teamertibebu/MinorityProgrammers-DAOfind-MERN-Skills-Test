@@ -20,13 +20,20 @@ const daoSchema = new mongoose.Schema({
   dao_structure: { type: String, enum: DAO_STRUCTURE },
   revenue_streams: String,
   voting_process: String,
-  TVL: Number,
+  TVL: mongoose.Mixed,
   tech_stack: String,
   notes: String,
   website: String,
   blockchain: { type: String, enum: BLOCKCHAIN },
   headquarters: String,
   approvalStage: { type: String, enum: APPROVAL_STAGE },
+  aum: mongoose.Mixed,
+  totalInUSD: mongoose.Mixed,
+  totalOutUSD: mongoose.Mixed,
+  members: mongoose.Mixed,
+  proposals: mongoose.Mixed,
+  voters: mongoose.Mixed,
+  voters_participation: mongoose.Mixed,
 });
 
 const daoModel = mongoose.model('DAO', daoSchema);
