@@ -19,6 +19,17 @@ app.get('/daoList', (req, res) => {
   });
 });
 
+app.get('/dao/:id', (req, res) => {
+  const id = req.params.id;
+  Dao.find({ _id: id }, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
 app.listen(PORT, (err) => {
   console.log(err ? err : `http://localhost:${PORT}`);
 });
