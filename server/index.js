@@ -22,13 +22,12 @@ app.get('/daoList', (req, res) => {
 
 app.get('/dao/:id', (req, res) => {
   const id = req.params.id;
-  Dao.find({ _id: id }, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(result);
-    }
-  });
+  Dao.find({ _id: id })
+    .populate('socials')
+    .exec((err, dao) => {
+      if (err) console.log(err);
+      else res.json(dao);
+    });
 });
 
 ///Below was used to reference the Dao & Socials schemas/////////

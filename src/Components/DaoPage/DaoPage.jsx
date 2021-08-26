@@ -8,6 +8,7 @@ import axios from 'axios';
 const DaoPage = () => {
   const { id } = useParams();
   const [dao, setDao] = useState({});
+  console.log(dao);
 
   useEffect(() => {
     (async () => {

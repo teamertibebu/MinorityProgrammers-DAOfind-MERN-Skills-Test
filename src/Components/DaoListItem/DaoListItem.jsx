@@ -12,7 +12,6 @@ const DaoListItem = ({ dao }) => {
   const history = useHistory();
 
   const handleDaoClick = (id, e) => {
-    console.log(id);
     history.push(`/dao/${id}`);
   };
 
