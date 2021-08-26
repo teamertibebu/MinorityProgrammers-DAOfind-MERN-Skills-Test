@@ -1,0 +1,6 @@
+.search {
+  left: 50%;
+  top: 52%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
