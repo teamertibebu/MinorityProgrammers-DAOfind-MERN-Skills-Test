@@ -7,7 +7,8 @@ const LeftSideBar = () => {
       item
       xs={2}
       style={{
-        backgroundColor: 'purple',
+        // backgroundColor: 'purple',
+        border: '1px solid lightgrey',
       }}
     >
       Left Side Bar

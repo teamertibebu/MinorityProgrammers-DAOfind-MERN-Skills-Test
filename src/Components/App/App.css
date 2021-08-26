@@ -3,5 +3,11 @@
   padding: 0;
 }
 .App {
-  background-image: linear-gradient(to left, #4685ff, #4793fe, #4cb8ff);
+  background-image: linear-gradient(
+    to left,
+    #4685ff,
+    #4793fe,
+    #4cb8ff,
+    #4685ff
+  );
 }

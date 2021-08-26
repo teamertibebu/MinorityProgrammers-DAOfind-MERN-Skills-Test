@@ -10,7 +10,9 @@ const Body = () => {
       container
       direction="row"
       style={{
-        backgroundColor: 'orange',
+        // backgroundColor: 'orange',
+        // height: '100vh',
+        overflow: 'scrollable',
       }}
     >
       <LeftSidebar />

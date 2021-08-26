@@ -8,7 +8,12 @@ const DaoListItem = ({ dao }) => {
       container
       xs={12}
       direction="row"
-      style={{ backgroundColor: 'lightgrey', border: '1px solid black' }}
+      style={{
+        backgroundColor: 'white',
+        border: '1px solid black',
+        padding: '20px',
+        margin: '7px',
+      }}
     >
       <Grid item xs={2}>
         <img src={dao.logo_link} style={{ width: '20%' }} alt="dao logo" />
