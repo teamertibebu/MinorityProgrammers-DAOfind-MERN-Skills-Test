@@ -13,7 +13,7 @@ const Search = () => {
       fullWidth
       InputProps={{
         startAdornment: (
-          <InputAdornment>
+          <InputAdornment position="start">
             <SearchIcon />
           </InputAdornment>
         ),

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import './AllDaoInfo.css';
 
-const AllDaoInfo = () => {
-  const [numberOfDaos, setNumberOfDaos] = useState(111);
-  const [aum, setAum] = useState('$7,747,7474');
+const AllDaoInfo = ({ numOfDaos, totalAum }) => {
+  const [numberOfDaos, setNumberOfDaos] = useState(numOfDaos);
+  const [aum, setAum] = useState(totalAum);
   return (
     <Grid container item justifyContent="space-around">
       <Grid item xs={6}>

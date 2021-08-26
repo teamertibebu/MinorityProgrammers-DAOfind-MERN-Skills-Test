@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const Dao = require('./db/Models/DAO');
+const fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'build', 'index.html')));
 app.use(express.urlencoded({ extended: true }));
