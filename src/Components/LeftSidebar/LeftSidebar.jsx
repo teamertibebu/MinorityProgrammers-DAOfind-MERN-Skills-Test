@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const LeftSideBar = () => {
   return (
@@ -12,6 +13,8 @@ const LeftSideBar = () => {
       }}
     >
       Left Side Bar
+      <Link to="/">Leaderboard</Link>
+      <Link to="/learn">Learn</Link>
     </Grid>
   );
 };

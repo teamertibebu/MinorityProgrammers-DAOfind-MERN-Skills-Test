@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import Filters from '../Filters/Filters';
 import AllDaoInfo from '../AllDaoInfo/AllDaoInfo';
 import daoList from '../../dataData.json';
+import { Route, Link } from 'react-router-dom';
 
 const DaoList = () => {
   //For Development Only://////////////////
@@ -24,6 +25,7 @@ const DaoList = () => {
   // }, []);
 
   return (
+    // <Route exact path="/">
     <Grid
       item
       container
@@ -41,6 +43,7 @@ const DaoList = () => {
         return <DaoListItem key={dao.full_name} dao={dao} />;
       })}
     </Grid>
+    // </Route>
   );
 };
 

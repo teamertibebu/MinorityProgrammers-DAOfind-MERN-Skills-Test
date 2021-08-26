@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import { Link, useHistory } from 'react-router-dom';
 
 const DaoListItem = ({ dao }) => {
   ///For Development Only:////////////////
@@ -8,9 +9,11 @@ const DaoListItem = ({ dao }) => {
     .slice(4, 15)
     .replace('01 ', '');
   ////////////////////////////////////////
+  const history = useHistory();
 
   const handleDaoClick = (id, e) => {
     console.log(id);
+    history.push(`/dao/${id}`);
   };
 
   return (
