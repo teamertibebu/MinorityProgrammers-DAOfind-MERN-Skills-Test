@@ -6,14 +6,7 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <Grid
-      container
-      item
-      direction="row"
-      spacing={5}
-      id="header"
-      // style={{ backgroundColor: 'green' }}
-    >
+    <Grid container item direction="row" spacing={5} id="header">
       <Grid item xs={3}>
         <ReactLogo style={{ padding: '20px 0 0 40px' }} />
       </Grid>

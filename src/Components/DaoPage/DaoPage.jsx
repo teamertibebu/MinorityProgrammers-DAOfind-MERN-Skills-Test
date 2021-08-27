@@ -20,9 +20,14 @@ const DaoPage = () => {
   }, [id]);
 
   return (
-    <Grid item container xs={10}>
-      <AllDaoInfo />
-      <Filters />
+    <Grid
+      item
+      container
+      xs={10}
+      style={{
+        border: '1px solid lightgrey',
+      }}
+    >
       This is the DAo Page: {dao.full_name}
     </Grid>
   );

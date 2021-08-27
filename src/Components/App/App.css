@@ -3,6 +3,7 @@
   padding: 0;
 }
 .App {
+  min-height: 100vh;
   background-image: linear-gradient(
     to left,
     #4685ff,
@@ -10,5 +11,4 @@
     #4cb8ff,
     #4685ff
   );
-  /* height: 100vh; */
 }

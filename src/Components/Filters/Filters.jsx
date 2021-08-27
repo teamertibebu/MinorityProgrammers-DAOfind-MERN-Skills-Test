@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import './Filters.css';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import axios from 'axios';
+import MoreFilters from '../MoreFilters/MoreFilters';
 
 const filters = [
   'All',
@@ -18,8 +19,13 @@ const filters = [
 ];
 
 const Filters = ({ setAllDaos }) => {
+  const [showMoreFilters, setShowMoreFilters] = useState(false);
+
   const handleFilter = async (filter) => {
-    if (filter === 'More') return;
+    if (filter === 'More') {
+      setShowMoreFilters(!showMoreFilters);
+      return;
+    }
 
     const { data: filteredDaos } = await axios.get(`/filter/${filter}`);
     setAllDaos(filteredDaos);
@@ -29,7 +35,6 @@ const Filters = ({ setAllDaos }) => {
     <Grid
       container
       item
-      // alignItems="center"
       justifyContent="space-between"
       style={{
         padding: '10px',
@@ -49,6 +54,7 @@ const Filters = ({ setAllDaos }) => {
           </Grid>
         );
       })}
+      {showMoreFilters ? <MoreFilters /> : null}
     </Grid>
   );
 };
