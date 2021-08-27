@@ -18,7 +18,7 @@ const filters = [
   'More',
 ];
 
-const Filters = ({ setAllDaos }) => {
+const Filters = ({ setAllDaos, allDaos }) => {
   const [showMoreFilters, setShowMoreFilters] = useState(false);
 
   const handleFilter = async (filter) => {
@@ -54,7 +54,9 @@ const Filters = ({ setAllDaos }) => {
           </Grid>
         );
       })}
-      {showMoreFilters ? <MoreFilters /> : null}
+      {showMoreFilters ? (
+        <MoreFilters allDaos={allDaos} setAllDaos={setAllDaos} />
+      ) : null}
     </Grid>
   );
 };

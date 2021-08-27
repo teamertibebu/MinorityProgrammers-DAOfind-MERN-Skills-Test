@@ -2,12 +2,6 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 
 const DaoSummary = ({ dao }) => {
-  ///For Development Only:////////////////
-  const date = new Date(dao.date_founded)
-    .toString()
-    .slice(4, 15)
-    .replace('01 ', '');
-  ////////////////////////////////////////
   return (
     <>
       <Grid item xs={2}>
@@ -23,7 +17,7 @@ const DaoSummary = ({ dao }) => {
         <Typography>{dao.aum}</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography>{date}</Typography>
+        <Typography>{dao.date_founded}</Typography>
       </Grid>
     </>
   );

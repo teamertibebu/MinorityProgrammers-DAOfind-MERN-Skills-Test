@@ -27,7 +27,7 @@ const DaoList = () => {
   return (
     <Grid item container xs={10}>
       <AllDaoInfo numOfDaos={numOfDaos} totalAum={totalAum} />
-      <Filters setAllDaos={setAllDaos} />
+      <Filters setAllDaos={setAllDaos} allDaos={allDaos} />
 
       {allDaos.map((dao) => {
         return <DaoListItem key={dao.full_name} dao={dao} />;

@@ -10,7 +10,7 @@ const {
 const daoSchema = new mongoose.Schema({
   full_name: String,
   description: String,
-  date_founded: Date,
+  date_founded: String,
   date_created: Date,
   logo_link: String,
   category: { type: String, enum: CATEGORY },

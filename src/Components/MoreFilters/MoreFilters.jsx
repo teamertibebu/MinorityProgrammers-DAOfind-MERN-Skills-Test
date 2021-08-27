@@ -1,29 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Select,
   FormControl,
   InputLabel,
   MenuItem,
   Grid,
+  Button,
+  Typography,
 } from '@material-ui/core';
 import allFilters from './FilterInfo';
+import axios from 'axios';
 
-const MoreFilters = () => {
+const MoreFilters = ({ allDaos, setAllDaos }) => {
   const [TVL, setTVL] = useState('');
   const [blockchain, setBlockchain] = useState('');
-  const [yearFounded, setYearFounded] = useState('');
+  const [date_founded, setDateFounded] = useState('');
+  const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    setAllDaos((daos) => {
+      const valueOption = {
+        blockchain,
+        date_founded,
+        TVL,
+      };
+      const value = valueOption[filter];
+      return daos.filter((dao) => {
+        return dao[filter] == value;
+      });
+    });
+  }, [filter, TVL, blockchain, date_founded]);
 
   const handleChange = (e) => {
     const newState = e.target.value;
     const stateName = e.target.name;
+    setFilter(stateName);
 
     const stateUpdaters = {
-      yearFounded: setYearFounded,
+      date_founded: setDateFounded,
       blockchain: setBlockchain,
       TVL: setTVL,
     };
 
     stateUpdaters[stateName](newState);
+  };
+
+  const handleReset = () => {
+    setTVL('');
+    setBlockchain('');
+    setDateFounded('');
+    setFilter('');
+    (async () => {
+      const { data } = await axios.get('/daoList');
+      setAllDaos(data);
+    })();
   };
 
   return (
@@ -43,8 +73,8 @@ const MoreFilters = () => {
             {i === 0 ? 'Year Founded' : i === 1 ? 'Blockchain' : 'TVL'}
           </InputLabel>
           <Select
-            value={i === 0 ? yearFounded : i === 1 ? blockchain : TVL}
-            name={i === 0 ? 'yearFounded' : i === 1 ? 'blockchain' : 'TVL'}
+            value={i === 0 ? date_founded : i === 1 ? blockchain : TVL}
+            name={i === 0 ? 'date_founded' : i === 1 ? 'blockchain' : 'TVL'}
             onChange={handleChange}
           >
             {filter.map((option) => (
@@ -55,6 +85,9 @@ const MoreFilters = () => {
           </Select>
         </FormControl>
       ))}
+      <Button variant="contained" onClick={handleReset}>
+        <Typography>Reset</Typography>
+      </Button>
     </Grid>
   );
 };

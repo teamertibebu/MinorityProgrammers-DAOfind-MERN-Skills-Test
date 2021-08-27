@@ -40,6 +40,17 @@ app.get('/filter/:filter', (req, res) => {
   });
 });
 
+// app.get('/test', (req, res) => {
+//   Dao.find({}, (err, result) => {
+//     result.forEach((dao) => {
+//       const year = dao.date_founded.toString().slice(11, 15);
+//       dao.date_founded = year;
+//       // console.log(dao.date_founded);
+//       dao.save();
+//     });
+//     res.end();
+//   });
+// });
 ///Below was used to reference the Dao & Socials schemas/////////
 /*app.get('/update', async (req, res) => {
   const daos = await Dao.find({});
