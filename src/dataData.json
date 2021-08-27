@@ -13,6 +13,7 @@
     "voters": 1077,
     "proposals": 6,
     "voters_participation": 0.4192586479395209,
+    "description": "Uniswap empowers developers, liquidity providers and traders to participate in a financial marketplace that is open and accessible to all. We are committed to open source software and building on the decentralized web.",
     "__v": 0
   },
   {
@@ -29,11 +30,13 @@
     "voters": 980,
     "proposals": 56,
     "voters_participation": 0.5621651388777348,
+    "description": "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
     "__v": 0
   },
   {
     "_id": "6125dc288d6935c32de672d9",
     "full_name": "Aave",
+    "description": "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
     "date_founded": "2017-05-01T05:00:00.000Z",
     "logo_link": "https://daolist.fyi/nextimg/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1186270065085370368%2FJ1YJtvdI_normal.jpg",
     "category": "Protocol",
@@ -50,7 +53,7 @@
   {
     "_id": "6125dc288d6935c32de672da",
     "full_name": "Badger",
-    "description": "",
+    "description": "DAO dedicated to building products and infrastructure to bring Bitcoin to DeFi.",
     "date_founded": "2020-08-01T05:00:00.000Z",
     "logo_link": "https://daolist.fyi/nextimg/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1392501414887313409%2FixijGeIo_normal.jpg",
     "category": "Protocol",
@@ -68,6 +71,7 @@
   {
     "_id": "6125dc288d6935c32de672db",
     "full_name": "SushiChef",
+    "description": "A fully decentralized protocol for automated liquidity provision on Ethereum.",
     "date_founded": "2020-09-01T05:00:00.000Z",
     "logo_link": "https://sushi.com/static/media/logo.dec926df.png",
     "category": "Protocol",
@@ -100,6 +104,7 @@
   {
     "_id": "6125dc288d6935c32de672de",
     "full_name": "Tornado",
+    "description": "Non-custodial anonymous transactions on Ethereum.",
     "date_founded": "2019-07-01T05:00:00.000Z",
     "logo_link": "https://daolist.fyi/nextimg/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1154798570047967233%2FZINt8NSB_normal.jpg",
     "category": "Protocol",
@@ -166,6 +171,7 @@
   {
     "_id": "6125dc288d6935c32de672df",
     "full_name": "Balancer",
+    "description": "Balancer is a protocol for programmable liquidity.",
     "date_founded": "2019-08-01T05:00:00.000Z",
     "logo_link": "https://daolist.fyi/nextimg/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1174715409100083200%2FRYCU7_dZ_normal.png",
     "category": "Protocol",

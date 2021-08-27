@@ -1,0 +1,29 @@
+#previewIcon:hover {
+  cursor: pointer;
+}
+
+#previewIcon {
+  position: relative;
+  float: right;
+}
+
+#preview {
+  height: 350px;
+  width: 100%;
+}
+
+#description {
+  font-size: 20px;
+}
+
+.item {
+  border: 1px solid blue;
+}
+
+#footer {
+  margin-top: 20px;
+}
+
+.ft {
+  margin-right: 5px;
+}
