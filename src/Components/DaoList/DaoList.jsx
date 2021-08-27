@@ -4,22 +4,11 @@ import DaoListItem from '../DaoListItem/DaoListItem';
 import { Grid } from '@material-ui/core';
 import Filters from '../Filters/Filters';
 import AllDaoInfo from '../AllDaoInfo/AllDaoInfo';
-import daoList from '../../dataData.json';
-import { Route, Link } from 'react-router-dom';
 
 const DaoList = () => {
-  //For Development Only://////////////////
-  // const numOfDaos = daoList.length;
-  // const totalAum = daoList.reduce((acc, curr) => {
-  //   const number = Number(curr.aum) || 0;
-  //   acc += number;
-  //   return acc;
-  // }, 0);
-  /////////////////////////////////////////
   const [allDaos, setAllDaos] = useState([]);
   const [numOfDaos, setNumOfDaos] = useState();
   const [totalAum, setTotalAum] = useState();
-  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     axios.get('/daoList').then(({ data }) => {

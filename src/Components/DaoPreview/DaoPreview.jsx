@@ -7,7 +7,6 @@ import { Grid, Typography } from '@material-ui/core';
 const DaoPreview = ({ dao: Dao }) => {
   const history = useHistory();
   const [dao, setDao] = useState(Dao);
-  (() => (dao.full_name === 'Uniswap' ? console.log(dao) : null))();
 
   const handleDaoClick = (id, e) => {
     history.push(`/dao/${id}`);

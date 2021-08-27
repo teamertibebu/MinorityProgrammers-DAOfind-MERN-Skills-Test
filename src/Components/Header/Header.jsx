@@ -3,6 +3,7 @@ import { ReactComponent as ReactLogo } from '../../dao-logo.svg';
 import Search from '../Search/Search';
 import { Grid, Button } from '@material-ui/core';
 import './Header.css';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 
 const Header = () => {
   return (
@@ -14,7 +15,12 @@ const Header = () => {
         <Search />
       </Grid>
       <Grid item xs={2}>
-        <Button variant="contained" color="primary" className="connectWallet">
+        <Button
+          startIcon={<AccountBalanceWalletIcon />}
+          variant="contained"
+          color="primary"
+          className="connectWallet"
+        >
           Connect Wallet
         </Button>
       </Grid>

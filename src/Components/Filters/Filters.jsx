@@ -42,7 +42,7 @@ const Filters = ({ setAllDaos }) => {
     >
       {filters.map((filter) => {
         return (
-          <Grid item>
+          <Grid item key={filter}>
             <Button
               size="large"
               variant="outlined"

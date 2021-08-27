@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Route, useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
-import Filters from '../Filters/Filters';
-import AllDaoInfo from '../AllDaoInfo/AllDaoInfo';
 import axios from 'axios';
 
 const DaoPage = () => {

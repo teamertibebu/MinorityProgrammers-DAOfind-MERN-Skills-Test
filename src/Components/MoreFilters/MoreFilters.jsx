@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Select,
   FormControl,
@@ -6,8 +6,26 @@ import {
   MenuItem,
   Grid,
 } from '@material-ui/core';
+import allFilters from './FilterInfo';
 
 const MoreFilters = () => {
+  const [TVL, setTVL] = useState('');
+  const [blockchain, setBlockchain] = useState('');
+  const [yearFounded, setYearFounded] = useState('');
+
+  const handleChange = (e) => {
+    const newState = e.target.value;
+    const stateName = e.target.name;
+
+    const stateUpdaters = {
+      yearFounded: setYearFounded,
+      blockchain: setBlockchain,
+      TVL: setTVL,
+    };
+
+    stateUpdaters[stateName](newState);
+  };
+
   return (
     <Grid
       item
@@ -19,30 +37,24 @@ const MoreFilters = () => {
         marginTop: '5px',
       }}
     >
-      <FormControl style={{ width: '30%' }}>
-        <InputLabel id="demo-simple-select-label">Date Founded</InputLabel>
-        <Select labelId="demo-simple-select-label" id="demo-simple-select">
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl style={{ width: '30%' }}>
-        <InputLabel id="demo-simple-select-label">Blockchain</InputLabel>
-        <Select labelId="demo-simple-select-label" id="demo-simple-select">
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl style={{ width: '30%' }}>
-        <InputLabel id="demo-simple-select-label">TVL</InputLabel>
-        <Select labelId="demo-simple-select-label" id="demo-simple-select">
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+      {allFilters.map((filter, i) => (
+        <FormControl style={{ width: '30%' }} key={filter}>
+          <InputLabel>
+            {i === 0 ? 'Year Founded' : i === 1 ? 'Blockchain' : 'TVL'}
+          </InputLabel>
+          <Select
+            value={i === 0 ? yearFounded : i === 1 ? blockchain : TVL}
+            name={i === 0 ? 'yearFounded' : i === 1 ? 'blockchain' : 'TVL'}
+            onChange={handleChange}
+          >
+            {filter.map((option) => (
+              <MenuItem value={option} key={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ))}
     </Grid>
   );
 };
