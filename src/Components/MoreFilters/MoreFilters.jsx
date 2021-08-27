@@ -11,25 +11,25 @@ import {
 import allFilters from './FilterInfo';
 import axios from 'axios';
 
-const MoreFilters = ({ allDaos, setAllDaos }) => {
+const MoreFilters = ({ setAllDaos, category, setCategory }) => {
   const [TVL, setTVL] = useState('');
   const [blockchain, setBlockchain] = useState('');
   const [date_founded, setDateFounded] = useState('');
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    setAllDaos((daos) => {
-      const valueOption = {
-        blockchain,
-        date_founded,
-        TVL,
-      };
-      const value = valueOption[filter];
-      return daos.filter((dao) => {
-        return dao[filter] == value;
+    axios
+      .get('/filter', {
+        params: {
+          date_founded: date_founded !== 'None' ? date_founded : '',
+          blockchain: blockchain !== 'None' ? blockchain : '',
+          category: category !== 'All' ? category : '',
+        },
+      })
+      .then(({ data }) => {
+        setAllDaos(data);
       });
-    });
-  }, [filter, TVL, blockchain, date_founded]);
+  }, [filter, TVL, blockchain, date_founded, category, setAllDaos]);
 
   const handleChange = (e) => {
     const newState = e.target.value;
@@ -50,10 +50,7 @@ const MoreFilters = ({ allDaos, setAllDaos }) => {
     setBlockchain('');
     setDateFounded('');
     setFilter('');
-    (async () => {
-      const { data } = await axios.get('/daoList');
-      setAllDaos(data);
-    })();
+    setCategory('All');
   };
 
   return (

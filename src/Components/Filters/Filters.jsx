@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import './Filters.css';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import axios from 'axios';
 import MoreFilters from '../MoreFilters/MoreFilters';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 const filters = [
   'All',
@@ -15,48 +15,39 @@ const filters = [
   'Investment',
   'Platform',
   'Collector',
-  'More',
 ];
 
-const Filters = ({ setAllDaos, allDaos }) => {
-  const [showMoreFilters, setShowMoreFilters] = useState(false);
+const Filters = ({ setAllDaos }) => {
+  const [category, setCategory] = useState('All');
 
-  const handleFilter = async (filter) => {
-    if (filter === 'More') {
-      setShowMoreFilters(!showMoreFilters);
-      return;
-    }
-
-    const { data: filteredDaos } = await axios.get(`/filter/${filter}`);
-    setAllDaos(filteredDaos);
+  const handleFilter = (e, filter) => {
+    setCategory(filter);
   };
 
   return (
     <Grid
       container
       item
-      justifyContent="space-between"
+      justifyContent="center"
       style={{
         padding: '10px',
       }}
     >
-      {filters.map((filter) => {
-        return (
-          <Grid item key={filter}>
-            <Button
-              size="large"
-              variant="outlined"
-              className="button"
-              onClick={handleFilter.bind(this, filter)}
-            >
-              {filter !== 'More' ? filter : <FilterListIcon />}
-            </Button>
-          </Grid>
-        );
-      })}
-      {showMoreFilters ? (
-        <MoreFilters allDaos={allDaos} setAllDaos={setAllDaos} />
-      ) : null}
+      <ToggleButtonGroup
+        size="large"
+        value={category}
+        exclusive
+        onChange={handleFilter}
+      >
+        {filters.map((filter) => {
+          return <ToggleButton value={filter}>{filter}</ToggleButton>;
+        })}
+      </ToggleButtonGroup>
+      <MoreFilters
+        category={category}
+        setAllDaos={setAllDaos}
+        setCategory={setCategory}
+      />
     </Grid>
   );
 };

@@ -19,6 +19,9 @@ const DaoSummary = ({ dao }) => {
       <Grid item xs={2}>
         <Typography>{dao.date_founded}</Typography>
       </Grid>
+      <Grid item xs={2}>
+        <Typography>{dao.blockchain}</Typography>
+      </Grid>
     </>
   );
 };
