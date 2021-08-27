@@ -17,6 +17,12 @@ const blockchain = [
   'Ripple',
 ];
 
-const TVL = ['None', 'Under $1b', '$1b to $5b', '$5b to $10', 'Over $10b'];
+const TVL = [
+  'None',
+  'Under $1 Billion',
+  '$1 Billion - $5 Billion',
+  '$5 Billion - $10 Billion',
+  'Over $10 Billion',
+];
 const allFilters = [dateFounded, blockchain, TVL];
 export default allFilters;

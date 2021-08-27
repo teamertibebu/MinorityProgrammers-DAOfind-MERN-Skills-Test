@@ -29,13 +29,25 @@ app.get('/dao/:id', (req, res) => {
 });
 
 app.get('/filter', (req, res) => {
+  const TVLranges = {
+    'Under $1 Billion': { $lt: 1e9 },
+    '$1 Billion - $5 Billion': { $gte: 1e9, $lt: 5e9 },
+    '$5 Billion - $10 Billion': { $gte: 5e9, $lt: 10e9 },
+    'Over $10 Billion': { $gt: 10e9 },
+  };
+
   const query = ((filters) => {
     const queries = {};
     for (let key in filters) {
       if (filters[key] && filters[key] !== 'All') {
-        queries[key] = filters[key];
+        if (key === 'TVL') {
+          queries[key] = TVLranges[filters[key]];
+        } else {
+          queries[key] = filters[key];
+        }
       }
     }
+    console.log(queries, '------');
     return queries;
   })(req.query);
 

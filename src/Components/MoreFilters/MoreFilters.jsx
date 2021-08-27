@@ -24,6 +24,7 @@ const MoreFilters = ({ setAllDaos, category, setCategory }) => {
           date_founded: date_founded !== 'None' ? date_founded : '',
           blockchain: blockchain !== 'None' ? blockchain : '',
           category: category !== 'All' ? category : '',
+          TVL: TVL !== 'None' ? TVL : '',
         },
       })
       .then(({ data }) => {
