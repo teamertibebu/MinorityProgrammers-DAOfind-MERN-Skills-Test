@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { useHistory } from 'react-router-dom';
 import './DaoPreview.css';
 import { Grid, Typography } from '@material-ui/core';
 
-const DaoPreview = ({ dao: Dao }) => {
+const DaoPreview = ({ dao }) => {
   const history = useHistory();
-  const [dao, setDao] = useState(Dao);
 
   const handleDaoClick = (id, e) => {
     history.push(`/dao/${id}`);
@@ -55,14 +54,14 @@ const DaoPreview = ({ dao: Dao }) => {
           <Typography>Name</Typography>
           <Typography>Blockchain</Typography>
           <Typography>Headquarters</Typography>
-          <Typography>Date Founded</Typography>
+          <Typography>Year Founded</Typography>
         </Grid>
         <Grid item container id="footerDetails" justifyContent="space-evenly">
-          <Typography>{dao.symbol || 'N/A'}</Typography>
+          <Typography>{dao.governance_token_symbol}</Typography>
           <Typography>{dao.full_name}</Typography>
-          <Typography>{dao.blockchain || 'N/A'}</Typography>
+          <Typography>{dao.blockchain}</Typography>
           <Typography>{dao.headquarters || 'N/A'}</Typography>
-          <Typography>{dao.found_date || 'N/A'}</Typography>
+          <Typography>{dao.date_founded}</Typography>
         </Grid>
       </Grid>
     </Grid>

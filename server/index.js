@@ -42,12 +42,13 @@ app.get('/filter', (req, res) => {
       if (filters[key] && filters[key] !== 'All') {
         if (key === 'TVL') {
           queries[key] = TVLranges[filters[key]];
+        } else if (key === 'searchTerm') {
+          queries['full_name'] = { $regex: filters[key], $options: 'i' };
         } else {
           queries[key] = filters[key];
         }
       }
     }
-    console.log(queries, '------');
     return queries;
   })(req.query);
 

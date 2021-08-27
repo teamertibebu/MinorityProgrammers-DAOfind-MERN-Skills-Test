@@ -8,14 +8,7 @@ import { Switch, Route } from 'react-router-dom';
 const Body = () => {
   return (
     <Switch>
-      <Grid
-        item
-        container
-        direction="row"
-        style={{
-          overflow: 'scrollable',
-        }}
-      >
+      <Grid item container direction="row">
         <LeftSidebar />
         <Route exact path="/">
           <DaoList />

@@ -17,7 +17,7 @@ const filters = [
   'Collector',
 ];
 
-const Filters = ({ setAllDaos }) => {
+const Filters = ({ setAllDaos, setTotalAum, setNumOfDaos }) => {
   const [category, setCategory] = useState('All');
 
   const handleFilter = (e, filter) => {
@@ -40,13 +40,19 @@ const Filters = ({ setAllDaos }) => {
         onChange={handleFilter}
       >
         {filters.map((filter) => {
-          return <ToggleButton value={filter}>{filter}</ToggleButton>;
+          return (
+            <ToggleButton value={filter} key={filter}>
+              {filter}
+            </ToggleButton>
+          );
         })}
       </ToggleButtonGroup>
       <MoreFilters
         category={category}
         setAllDaos={setAllDaos}
         setCategory={setCategory}
+        setNumOfDaos={setNumOfDaos}
+        setTotalAum={setTotalAum}
       />
     </Grid>
   );

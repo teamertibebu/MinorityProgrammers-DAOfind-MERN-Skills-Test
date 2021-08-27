@@ -20,7 +20,7 @@ const daoSchema = new mongoose.Schema({
   dao_structure: { type: String, enum: DAO_STRUCTURE },
   revenue_streams: String,
   voting_process: String,
-  TVL: mongoose.Mixed,
+  TVL: Number,
   tech_stack: String,
   notes: String,
   website: String,
@@ -30,10 +30,10 @@ const daoSchema = new mongoose.Schema({
   aum: mongoose.Mixed,
   totalInUSD: mongoose.Mixed,
   totalOutUSD: mongoose.Mixed,
-  members: mongoose.Mixed,
-  proposals: mongoose.Mixed,
-  voters: mongoose.Mixed,
-  voters_participation: mongoose.Mixed,
+  members: Number,
+  proposals: Number,
+  voters: Number,
+  voters_participation: Number,
   socials: { type: mongoose.Schema.Types.ObjectId, ref: 'Social Media' },
 });
 

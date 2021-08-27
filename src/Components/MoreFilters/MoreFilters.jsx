@@ -10,12 +10,20 @@ import {
 } from '@material-ui/core';
 import allFilters from './FilterInfo';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-const MoreFilters = ({ setAllDaos, category, setCategory }) => {
+const MoreFilters = ({
+  setAllDaos,
+  category,
+  setCategory,
+  setTotalAum,
+  setNumOfDaos,
+}) => {
   const [TVL, setTVL] = useState('');
   const [blockchain, setBlockchain] = useState('');
   const [date_founded, setDateFounded] = useState('');
   const [filter, setFilter] = useState('');
+  const searchTerm = useSelector((state) => state.searchTerm);
 
   useEffect(() => {
     axios
@@ -25,12 +33,30 @@ const MoreFilters = ({ setAllDaos, category, setCategory }) => {
           blockchain: blockchain !== 'None' ? blockchain : '',
           category: category !== 'All' ? category : '',
           TVL: TVL !== 'None' ? TVL : '',
+          searchTerm,
         },
       })
       .then(({ data }) => {
         setAllDaos(data);
+        setNumOfDaos(data.length);
+        setTotalAum(() => {
+          return data.reduce((acc, curr) => {
+            acc += curr.aum;
+            return acc;
+          }, 0);
+        });
       });
-  }, [filter, TVL, blockchain, date_founded, category, setAllDaos]);
+  }, [
+    filter,
+    TVL,
+    blockchain,
+    date_founded,
+    category,
+    setAllDaos,
+    searchTerm,
+    setTotalAum,
+    setNumOfDaos,
+  ]);
 
   const handleChange = (e) => {
     const newState = e.target.value;
