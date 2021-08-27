@@ -9,41 +9,41 @@ import { Route, Link } from 'react-router-dom';
 
 const DaoList = () => {
   //For Development Only://////////////////
-  const numOfDaos = daoList.length;
-  const totalAum = daoList.reduce((acc, curr) => {
-    const number = Number(curr.aum) || 0;
-    acc += number;
-    return acc;
-  }, 0);
+  // const numOfDaos = daoList.length;
+  // const totalAum = daoList.reduce((acc, curr) => {
+  //   const number = Number(curr.aum) || 0;
+  //   acc += number;
+  //   return acc;
+  // }, 0);
   /////////////////////////////////////////
-  // const [allDaos, setAllDaos] = useState([]);
-  // useEffect(() => {
-  //   axios.get('/daoList').then(({ data }) => {
-  //     // setAllDaos(data);
-  //     console.log();
-  //   });
-  // }, []);
+  const [allDaos, setAllDaos] = useState([]);
+  const [numOfDaos, setNumOfDaos] = useState();
+  const [totalAum, setTotalAum] = useState();
+  const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    axios.get('/daoList').then(({ data }) => {
+      setAllDaos(data);
+      setNumOfDaos(data.length);
+      setTotalAum(() => {
+        return data.reduce((acc, curr) => {
+          const number = Number(curr.aum) || 0;
+          acc += number;
+          return acc;
+        }, 0);
+      });
+    });
+  }, []);
 
   return (
-    // <Route exact path="/">
-    <Grid
-      item
-      container
-      xs={10}
-      style={
-        {
-          // backgroundColor: 'yellow',
-        }
-      }
-    >
+    <Grid item container xs={10}>
       <AllDaoInfo numOfDaos={numOfDaos} totalAum={totalAum} />
-      <Filters />
+      <Filters setAllDaos={setAllDaos} />
 
-      {daoList.map((dao) => {
+      {allDaos.map((dao) => {
         return <DaoListItem key={dao.full_name} dao={dao} />;
       })}
     </Grid>
-    // </Route>
   );
 };
 

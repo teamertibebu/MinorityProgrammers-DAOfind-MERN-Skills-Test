@@ -1,34 +1,54 @@
 import React from 'react';
 import { Grid, Button } from '@material-ui/core';
 import './Filters.css';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import axios from 'axios';
 
-const Filters = () => {
+const filters = [
+  'All',
+  'Protocol',
+  'Service',
+  'Grant',
+  'Media',
+  'Social',
+  'Investment',
+  'Platform',
+  'Collector',
+  'More',
+];
+
+const Filters = ({ setAllDaos }) => {
+  const handleFilter = async (filter) => {
+    if (filter === 'More') return;
+
+    const { data: filteredDaos } = await axios.get(`/filter/${filter}`);
+    setAllDaos(filteredDaos);
+  };
+
   return (
     <Grid
       container
       item
-      alignItems="center"
+      // alignItems="center"
       justifyContent="space-between"
       style={{
-        // backgroundColor: 'blue',
         padding: '10px',
       }}
     >
-      <Button size="large" variant="outlined" className="button">
-        Filter 1
-      </Button>
-      <Button size="large" variant="outlined" className="button">
-        Filter 2
-      </Button>
-      <Button size="large" variant="outlined" className="button">
-        Filter 3
-      </Button>
-      <Button size="large" variant="outlined" className="button">
-        Filter 4
-      </Button>
-      <Button size="large" variant="outlined" className="button">
-        Filter 5
-      </Button>
+      {filters.map((filter) => {
+        return (
+          <Grid item>
+            <Button
+              size="large"
+              variant="outlined"
+              className="button"
+              onClick={handleFilter.bind(this, filter)}
+            >
+              {filter !== 'More' ? filter : <FilterListIcon />}
+            </Button>
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };

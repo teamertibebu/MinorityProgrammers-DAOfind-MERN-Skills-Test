@@ -30,6 +30,16 @@ app.get('/dao/:id', (req, res) => {
     });
 });
 
+app.get('/filter/:filter', (req, res) => {
+  const filter = req.params.filter;
+  const query = filter === 'All' ? {} : { category: filter };
+
+  Dao.find(query, (err, result) => {
+    if (err) console.log(err);
+    else res.json(result);
+  });
+});
+
 ///Below was used to reference the Dao & Socials schemas/////////
 /*app.get('/update', async (req, res) => {
   const daos = await Dao.find({});
