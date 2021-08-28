@@ -4,13 +4,13 @@ import DaoListItem from '../DaoListItem/DaoListItem';
 import { Grid } from '@material-ui/core';
 import Filters from '../Filters/Filters';
 import AllDaoInfo from '../AllDaoInfo/AllDaoInfo';
+import TableHeaders from '../TableHeaders/TableHeaders';
 import {
   Table,
   TableContainer,
   Paper,
   TableHead,
   TableRow,
-  TableCell,
   TableBody,
 } from '@material-ui/core';
 
@@ -46,13 +46,7 @@ const DaoList = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell />
-              <TableCell />
-              <TableCell>Name</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell>AUM</TableCell>
-              <TableCell>Year Founded</TableCell>
-              <TableCell>Blockchain</TableCell>
+              <TableHeaders setAllDaos={setAllDaos} allDaos={allDaos} />
             </TableRow>
           </TableHead>
           <TableBody>

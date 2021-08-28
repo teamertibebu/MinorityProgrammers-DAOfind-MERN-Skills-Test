@@ -26,27 +26,35 @@ const DaoPreview = ({ dao, open }) => {
   return (
     <>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <Box margin={1}>
+        <Box margin={3}>
           <Table
             style={{ border: '1px solid lightgrey', marginBottom: '10px' }}
           >
-            <TableBody>
+            <TableHead>
               <TableRow>
-                <TableCell />
-                <TableCell>
-                  <Typography>
-                    {dao.description || 'No Description Available'}
-                  </Typography>
+                <TableCell align="center">
+                  <Typography>Dao Description</Typography>
                 </TableCell>
-                <TableCell align="left">
-                  <Typography>Total Value Locked (TVL)</Typography>
-                  <Typography>{dao.TVL}</Typography>
+                <TableCell align="center">
+                  <Typography>Total Value Locked(TVL)</Typography>
                 </TableCell>
                 <TableCell>
                   <OpenInNewIcon
                     onClick={handleDaoClick.bind(this, dao._id)}
                     id="previewIcon"
                   />
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell style={{ height: '100px', width: '400px' }}>
+                  <Typography>
+                    {dao.description || 'No Description Available'}
+                  </Typography>
+                </TableCell>
+                <TableCell align="left">
+                  <Typography align="center">{dao.TVL}</Typography>
                 </TableCell>
               </TableRow>
             </TableBody>

@@ -26,26 +26,26 @@ const DaoSummary = ({ dao, setOpen }) => {
           <KeyboardArrowUpIcon />
         </IconButton>
       </TableCell>
-      <TableCell component="th" scope="row">
+      <TableCell>
         <img
           src={dao.logo_link}
-          style={{ width: '50px', borderRadius: '50%' }}
+          style={{ width: '40px', borderRadius: '20%' }}
           alt="dao logo"
         />
       </TableCell>
-      <TableCell component="th" scope="row">
+      <TableCell align="center">
         <Typography>{dao.full_name}</Typography>
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="center">
         <Typography>{dao.category}</Typography>
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="center">
         <Typography>{dao.aum}</Typography>
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="center">
         <Typography>{dao.date_founded}</Typography>
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="center">
         <Typography>{dao.blockchain}</Typography>
       </TableCell>
     </>
