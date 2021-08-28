@@ -3,8 +3,20 @@ import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { useHistory } from 'react-router-dom';
 import './DaoPreview.css';
 import { Grid, Typography } from '@material-ui/core';
+import {
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  IconButton,
+  Collapse,
+  Box,
+} from '@material-ui/core';
 
-const DaoPreview = ({ dao }) => {
+const DaoPreview = ({ dao, open }) => {
   const history = useHistory();
 
   const handleDaoClick = (id, e) => {
@@ -12,59 +24,78 @@ const DaoPreview = ({ dao }) => {
   };
 
   return (
-    <Grid container id="preview">
-      <Grid item container>
-        <Grid item container xs={6} id="description" className="item">
-          <Typography>
-            {dao.description || 'No Description Available'}
-          </Typography>
-        </Grid>
-        <Grid container item xs={6} className="item" direction="row">
-          <Grid item style={{ backgroundColor: 'red', height: '10%' }} xs={12}>
-            <OpenInNewIcon
-              onClick={handleDaoClick.bind(this, dao._id)}
-              id="previewIcon"
-            />
-          </Grid>
-          <Grid
-            item
-            container
-            style={{ backgroundColor: 'purple', height: '90%' }}
-            xs={12}
-            direction="column"
+    <>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <Box margin={1}>
+          <Table
+            style={{ border: '1px solid lightgrey', marginBottom: '10px' }}
           >
-            <Grid item style={{ backgroundColor: 'silver' }}>
-              <Typography>Total Value Locked (TVL)</Typography>
-            </Grid>
-            <Grid item style={{ backgroundColor: 'white' }}>
-              <Typography>{dao.TVL}</Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        container
-        className="item"
-        alignItems="center"
-        style={{ backgroundColor: 'red' }}
-      >
-        <Grid item container id="footerTitles" justifyContent="space-evenly">
-          <Typography>Symbol</Typography>
-          <Typography>Name</Typography>
-          <Typography>Blockchain</Typography>
-          <Typography>Headquarters</Typography>
-          <Typography>Year Founded</Typography>
-        </Grid>
-        <Grid item container id="footerDetails" justifyContent="space-evenly">
-          <Typography>{dao.governance_token_symbol}</Typography>
-          <Typography>{dao.full_name}</Typography>
-          <Typography>{dao.blockchain}</Typography>
-          <Typography>{dao.headquarters || 'N/A'}</Typography>
-          <Typography>{dao.date_founded}</Typography>
-        </Grid>
-      </Grid>
-    </Grid>
+            <TableBody>
+              <TableRow>
+                <TableCell />
+                <TableCell>
+                  <Typography>
+                    {dao.description || 'No Description Available'}
+                  </Typography>
+                </TableCell>
+                <TableCell align="left">
+                  <Typography>Total Value Locked (TVL)</Typography>
+                  <Typography>{dao.TVL}</Typography>
+                </TableCell>
+                <TableCell>
+                  <OpenInNewIcon
+                    onClick={handleDaoClick.bind(this, dao._id)}
+                    id="previewIcon"
+                  />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Table style={{ border: '1px solid lightgrey' }}>
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <Typography>Symbol</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>Name</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>Blockchain</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>Headquarters</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>Year Founded</Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableCell>
+                <Typography>{dao.governance_token_symbol}</Typography>{' '}
+              </TableCell>
+
+              <TableCell>
+                <Typography>{dao.full_name}</Typography>{' '}
+              </TableCell>
+
+              <TableCell>
+                <Typography>{dao.blockchain}</Typography>{' '}
+              </TableCell>
+
+              <TableCell>
+                <Typography>{dao.headquarters || 'N/A'}</Typography>{' '}
+              </TableCell>
+
+              <TableCell>
+                <Typography>{dao.date_founded}</Typography>{' '}
+              </TableCell>
+            </TableBody>
+          </Table>
+        </Box>
+      </Collapse>
+    </>
   );
 };
 

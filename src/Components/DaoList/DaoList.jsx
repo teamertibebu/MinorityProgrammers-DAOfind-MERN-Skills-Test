@@ -4,6 +4,15 @@ import DaoListItem from '../DaoListItem/DaoListItem';
 import { Grid } from '@material-ui/core';
 import Filters from '../Filters/Filters';
 import AllDaoInfo from '../AllDaoInfo/AllDaoInfo';
+import {
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from '@material-ui/core';
 
 const DaoList = () => {
   const [allDaos, setAllDaos] = useState([]);
@@ -33,10 +42,26 @@ const DaoList = () => {
         setNumOfDaos={setNumOfDaos}
         setTotalAum={setTotalAum}
       />
-
-      {allDaos.map((dao) => {
-        return <DaoListItem key={dao.full_name} dao={dao} />;
-      })}
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell />
+              <TableCell>Name</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell>AUM</TableCell>
+              <TableCell>Year Founded</TableCell>
+              <TableCell>Blockchain</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {allDaos.map((dao) => {
+              return <DaoListItem key={dao.full_name} dao={dao} />;
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Grid>
   );
 };

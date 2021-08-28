@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   Accordion,
@@ -8,26 +8,43 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DaoPreview from '../DaoPreview/DaoPreview';
 import DaoSummary from '../DaoSummary/DaoSummary';
+import {
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  IconButton,
+  Collapse,
+  Box,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useRowStyles = makeStyles({
+  root: {
+    '& > *': {
+      borderBottom: 'unset',
+    },
+  },
+});
 
 const DaoListItem = ({ dao }) => {
+  const [open, setOpen] = useState(false);
+  const classes = useRowStyles();
+
   return (
-    <Grid item container xs={12} direction="column">
-      <Accordion
-        style={{
-          backgroundColor: 'white',
-          border: '1px solid black',
-          padding: '20px',
-          margin: '7px',
-        }}
-      >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <DaoSummary dao={dao} />
-        </AccordionSummary>
-        <AccordionDetails>
-          <DaoPreview dao={dao} />
-        </AccordionDetails>
-      </Accordion>
-    </Grid>
+    <>
+      <TableRow className={classes.root}>
+        <DaoSummary dao={dao} setOpen={setOpen} />
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
+          <DaoPreview dao={dao} open={open} />
+        </TableCell>
+      </TableRow>
+    </>
   );
 };
 

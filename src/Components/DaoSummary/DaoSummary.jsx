@@ -1,27 +1,53 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
+import {
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  IconButton,
+  Collapse,
+  Box,
+} from '@material-ui/core';
+import KeyboardArrowUpIcon from '@material-ui/icons/ExpandMore';
 
-const DaoSummary = ({ dao }) => {
+const DaoSummary = ({ dao, setOpen }) => {
   return (
     <>
-      <Grid item xs={2}>
-        <img src={dao.logo_link} style={{ width: '20%' }} alt="dao logo" />
-      </Grid>
-      <Grid item xs={2}>
+      <TableCell>
+        <IconButton
+          aria-label="expand row"
+          size="small"
+          onClick={() => setOpen((open) => !open)}
+        >
+          <KeyboardArrowUpIcon />
+        </IconButton>
+      </TableCell>
+      <TableCell component="th" scope="row">
+        <img
+          src={dao.logo_link}
+          style={{ width: '50px', borderRadius: '50%' }}
+          alt="dao logo"
+        />
+      </TableCell>
+      <TableCell component="th" scope="row">
         <Typography>{dao.full_name}</Typography>
-      </Grid>
-      <Grid item xs={2}>
+      </TableCell>
+      <TableCell align="right">
         <Typography>{dao.category}</Typography>
-      </Grid>
-      <Grid item xs={2}>
+      </TableCell>
+      <TableCell align="right">
         <Typography>{dao.aum}</Typography>
-      </Grid>
-      <Grid item xs={2}>
+      </TableCell>
+      <TableCell align="right">
         <Typography>{dao.date_founded}</Typography>
-      </Grid>
-      <Grid item xs={2}>
+      </TableCell>
+      <TableCell align="right">
         <Typography>{dao.blockchain}</Typography>
-      </Grid>
+      </TableCell>
     </>
   );
 };
