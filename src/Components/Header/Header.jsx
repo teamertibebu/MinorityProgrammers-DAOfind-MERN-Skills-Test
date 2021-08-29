@@ -14,7 +14,7 @@ const Header = () => {
       <Grid item xs={7}>
         <Search />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={2} style={{ width: '10px' }}>
         <Button
           startIcon={<AccountBalanceWalletIcon />}
           variant="contained"

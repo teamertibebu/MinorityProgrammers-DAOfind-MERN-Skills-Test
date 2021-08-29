@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import Filters from '../Filters/Filters';
 import AllDaoInfo from '../AllDaoInfo/AllDaoInfo';
 import TableHeaders from '../TableHeaders/TableHeaders';
+import './DaoList.css';
 import {
   Table,
   TableContainer,
@@ -41,7 +42,7 @@ const DaoList = () => {
         setNumOfDaos={setNumOfDaos}
         setTotalAum={setTotalAum}
       />
-      <TableContainer>
+      <TableContainer id="listContainer">
         <Table>
           <TableHead>
             <TableRow>

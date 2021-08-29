@@ -18,6 +18,7 @@ const MoreFilters = ({
   setCategory,
   setTotalAum,
   setNumOfDaos,
+  moreFilters,
 }) => {
   const [TVL, setTVL] = useState('');
   const [blockchain, setBlockchain] = useState('');
@@ -87,7 +88,7 @@ const MoreFilters = ({
       justifyContent="space-between"
       style={{
         padding: '5px',
-        width: '100%',
+        width: '80%',
         marginTop: '5px',
       }}
     >
@@ -109,9 +110,15 @@ const MoreFilters = ({
           </Select>
         </FormControl>
       ))}
-      <Button variant="contained" onClick={handleReset}>
-        <Typography>Reset</Typography>
-      </Button>
+      <Grid item xs={1}>
+        <Button
+          variant="outlined"
+          onClick={handleReset}
+          style={{ height: '40px', marginTop: '10px' }}
+        >
+          <Typography>Reset</Typography>
+        </Button>
+      </Grid>
     </Grid>
   );
 };

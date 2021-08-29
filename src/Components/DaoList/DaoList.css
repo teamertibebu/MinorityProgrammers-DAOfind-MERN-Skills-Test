@@ -1,0 +1,6 @@
+#listContainer {
+  width: 83.3vw;
+  border-left: 1px solid lightgrey;
+  position: absolute;
+  top: 330px;
+}

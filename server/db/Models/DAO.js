@@ -1,5 +1,6 @@
 require('../index');
 const mongoose = require('mongoose');
+require('./Socials');
 const {
   CATEGORY,
   BLOCKCHAIN,

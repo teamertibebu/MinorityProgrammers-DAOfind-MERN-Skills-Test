@@ -10,14 +10,20 @@ const AllDaoInfo = ({ numOfDaos, totalAum }) => {
   }, [totalAum]);
 
   return (
-    <Grid container item justifyContent="space-around">
-      <Grid item xs={6}>
-        <div className="info">
+    <Grid
+      container
+      item
+      justifyContent="space-around"
+      alignItems="center"
+      id="container"
+    >
+      <Grid item xs={6} className="info">
+        <div>
           <p>Number of DAOs {numOfDaos}</p>
         </div>
       </Grid>
-      <Grid item xs={6}>
-        <div className="info">
+      <Grid item xs={6} className="info">
+        <div>
           <p>Total AUM (USD) {aum}</p>
         </div>
       </Grid>

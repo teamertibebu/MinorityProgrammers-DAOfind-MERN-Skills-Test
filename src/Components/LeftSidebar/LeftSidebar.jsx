@@ -9,6 +9,7 @@ const LeftSideBar = () => {
       xs={2}
       style={{
         border: '1px solid lightgrey',
+        // position: 'fixed',
         minHeight: '100vh',
       }}
     >

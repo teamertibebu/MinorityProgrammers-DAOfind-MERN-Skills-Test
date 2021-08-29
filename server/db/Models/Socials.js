@@ -1,6 +1,6 @@
 require('../index');
 const mongoose = require('mongoose');
-const DAO = require('./DAO');
+require('./DAO');
 
 const socialMediaSchema = new mongoose.Schema({
   dao_id: { type: mongoose.Schema.Types.ObjectId, ref: 'DAO' },
