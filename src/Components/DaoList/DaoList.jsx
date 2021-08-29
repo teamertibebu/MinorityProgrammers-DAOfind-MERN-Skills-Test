@@ -8,7 +8,6 @@ import TableHeaders from '../TableHeaders/TableHeaders';
 import {
   Table,
   TableContainer,
-  Paper,
   TableHead,
   TableRow,
   TableBody,

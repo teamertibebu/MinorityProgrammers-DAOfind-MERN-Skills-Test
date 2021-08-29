@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { useHistory } from 'react-router-dom';
 import './DaoPreview.css';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import {
   Table,
-  TableContainer,
-  Paper,
   TableHead,
   TableRow,
   TableCell,
   TableBody,
-  IconButton,
   Collapse,
   Box,
 } from '@material-ui/core';
+import StringifyNum from '../../StringifyNum';
 
 const DaoPreview = ({ dao, open }) => {
   const history = useHistory();
+  const [tvl, setTvl] = useState();
+
+  useEffect(() => {
+    setTvl(StringifyNum(dao.TVL));
+  }, [dao]);
 
   const handleDaoClick = (id, e) => {
     history.push(`/dao/${id}`);
@@ -54,7 +57,7 @@ const DaoPreview = ({ dao, open }) => {
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
-                  <Typography align="center">{dao.TVL}</Typography>
+                  <Typography align="center">{tvl}</Typography>
                 </TableCell>
               </TableRow>
             </TableBody>

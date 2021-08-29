@@ -1,20 +1,16 @@
-import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import {
-  Table,
-  TableContainer,
-  Paper,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  IconButton,
-  Collapse,
-  Box,
-} from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Typography } from '@material-ui/core';
+import { TableCell, IconButton } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/ExpandMore';
+import StringifyNum from '../../StringifyNum';
 
 const DaoSummary = ({ dao, setOpen }) => {
+  const [aum, setAum] = useState('');
+
+  useEffect(() => {
+    setAum(StringifyNum(dao.aum));
+  }, [dao]);
+
   return (
     <>
       <TableCell>
@@ -40,7 +36,7 @@ const DaoSummary = ({ dao, setOpen }) => {
         <Typography>{dao.category}</Typography>
       </TableCell>
       <TableCell align="center">
-        <Typography>{dao.aum}</Typography>
+        <Typography>{aum}</Typography>
       </TableCell>
       <TableCell align="center">
         <Typography>{dao.date_founded}</Typography>

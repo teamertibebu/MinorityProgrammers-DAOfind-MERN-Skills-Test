@@ -1,25 +1,7 @@
 import React, { useState } from 'react';
-import {
-  Grid,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DaoPreview from '../DaoPreview/DaoPreview';
 import DaoSummary from '../DaoSummary/DaoSummary';
-import {
-  Table,
-  TableContainer,
-  Paper,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  IconButton,
-  Collapse,
-  Box,
-} from '@material-ui/core';
+import { TableRow, TableCell } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useRowStyles = makeStyles({
